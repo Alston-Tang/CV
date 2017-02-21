@@ -48,7 +48,7 @@
   \fi
 }
 
-%Education
+%==================Education=====================
 \newcommand{\edutitle}[4] {
   \datedsubsection{#1}{#2}
   \textit{#3}\enspace{#4/4.0}\hfill\null
@@ -57,8 +57,8 @@
   #1 (\ignorespaces\notempty{#2}{#2,\ignorespaces}\notempty{#3}{#3\ignorespaces})\ignorespaces
 }
 \newcommand{\selectedcourses}[1] {
-  Selected Coursework:\foreach \n [count=\ni] in {#1} {\ignorespaces
-    \ifnum\ni=1%
+  Selected Coursework: \foreach \n [count=\ni] in {#1} {\ignorespaces
+    \ifnum\ni=1
       \n
     \else
       ,\n
@@ -76,6 +76,23 @@
 } {
   \end{cventry}
   \setlist[itemize]{}
+}
+%==================Skill===========================
+\newenvironment{skillentry} {
+  \setlist[itemize]{leftmargin=0em}
+  \begin{cventry}
+} {
+  \end{cventry}
+  \setlist[itemize]{}
+}
+\newcommand{\skilllist}[2] {
+    \textbf{#1}: \foreach \n [count=\ni] in {#2} {\ignorespaces
+      \ifnum\ni=1
+        \n
+      \else
+        ,\n
+      \fi
+    }
 }
 
 \newcommand{\datedsection}[2] {
