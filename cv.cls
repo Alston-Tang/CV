@@ -12,15 +12,20 @@
 \RequirePackage{fontawesome}
 % Make hyperlink
 \RequirePackage{hyperref}
+% Provide foreach loop
+\RequirePackage{pgffor}
+% Provide more flexible list
+\RequirePackage{enumitem}
 
 % Make line space less than single
 \setlength\lineskiplimit{-1000pt}
 \linespread{0.9}
+% Set list to be compact
+\setlist{nosep}
 
 % Adjust section's space
 \titlespacing*{\section}
-{0pt}{0pt}{0pt}
-
+{0pt}{0.5em}{0.3em}
 \titleformat{\section}         % Customise the \section command
   {\large\scshape\raggedright\bfseries} % Make the \section headers large (\Large),
                                % small capitals (\scshape) and left aligned (\raggedright)
@@ -28,8 +33,11 @@
   {}                           % Can be used to insert code before the heading
   [\titlerule]                 % Inserts a horizontal line after the heading
 
+% Adjust subsection's space
+\titlespacing*{\subsection}
+{0pt}{0.5em}{0em}
 \titleformat{\subsection}
-    {\scshape\raggedright\bfseries}
+    {\raggedright\bfseries}
     {}{0em}
     {}
 
@@ -38,6 +46,36 @@
   \else
     #2
   \fi
+}
+
+%Education
+\newcommand{\edutitle}[4] {
+  \datedsubsection{#1}{#2}
+  \textit{#3}\enspace{#4/4.0}\hfill\null
+}
+\newcommand{\course} [3] {
+  #1 (\ignorespaces\notempty{#2}{#2,\ignorespaces}\notempty{#3}{#3\ignorespaces})\ignorespaces
+}
+\newcommand{\selectedcourses}[1] {
+  Selected Coursework:\foreach \n [count=\ni] in {#1} {\ignorespaces
+    \ifnum\ni=1%
+      \n
+    \else
+      ,\n
+    \fi
+  }
+}
+\newenvironment{cventry} {
+  \begin{itemize}
+} {
+  \end{itemize}
+}
+\newenvironment{eduentry} {
+  \setlist[itemize]{rightmargin=6em}
+  \begin{cventry}
+} {
+  \end{cventry}
+  \setlist[itemize]{}
 }
 
 \newcommand{\datedsection}[2] {
