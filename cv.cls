@@ -85,6 +85,12 @@
   \end{cventry}
   \setlist[itemize]{}
 }
+
+%===================Experience=====================
+\newcommand{\exptitle}[4] {
+  \datedsubsection{#1}{#2}
+  \textit{#3, #4}
+}
 \newcommand{\skilllist}[2] {
     \textbf{#1}: \foreach \n [count=\ni] in {#2} {\ignorespaces
       \ifnum\ni=1
