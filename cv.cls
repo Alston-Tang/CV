@@ -91,6 +91,11 @@
   \datedsubsection{#1}{#2}
   \textit{#3, #4}
 }
+%===================Projects=======================
+\newcommand{\protitle}[3] {
+  \datedsubsection{#1}{#2}
+  \textit{#3}
+}
 \newcommand{\skilllist}[2] {
     \textbf{#1}: \foreach \n [count=\ni] in {#2} {\ignorespaces
       \ifnum\ni=1
