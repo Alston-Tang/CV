@@ -92,8 +92,8 @@
   \textit{#3, #4}
 }
 %===================Projects=======================
-\newcommand{\protitle}[3] {
-  \datedsubsection{#1}{#2}
+\newcommand{\protitle}[4] {
+  \datedsubsection{#1 \notempty{#4}{\href{https://github.com/Alston-Tang/#4}{\normalfont{ \faGithub\enspace#4}}}}{#2}
   \textit{#3}
 }
 \newcommand{\skilllist}[2] {
@@ -104,6 +104,14 @@
         ,\n
       \fi
     }
+}
+%===================Publication=====================
+\newenvironment{pubentry} {
+  \setlist[itemize]{leftmargin=0em}
+  \begin{cventry}
+} {
+  \end{cventry}
+  \setlist[itemize]{}
 }
 
 \newcommand{\datedsection}[2] {
