@@ -22,6 +22,8 @@
 \linespread{0.9}
 % Set list to be compact
 \setlist{nosep}
+% Supress page number
+\pagenumbering{gobble}
 
 % Adjust section's space
 \titlespacing*{\section}
@@ -48,6 +50,20 @@
   \fi
 }
 
+%==================Languages=====================
+% Simplefied Chinese
+\newif\ifsc
+\newcommand{\langsc}[1]{\ifsc#1\fi}
+% English
+\newif\ifen
+\newcommand{\langen}[1]{\ifen#1\fi}
+\DeclareOption{langsc}{\sctrue}
+\DeclareOption{langen}{\entrue}
+\ProcessOptions
+% Load any packages or environments needed by the specific language
+\ifsc
+  \usepackage[UTF8]{ctex}
+\fi
 %==================Education=====================
 \newcommand{\edutitle}[4] {
   \datedsubsection{#1}{#2}
@@ -57,7 +73,7 @@
   #1 (\ignorespaces\notempty{#2}{#2,\ignorespaces}\notempty{#3}{#3\ignorespaces})\ignorespaces
 }
 \newcommand{\selectedcourses}[1] {
-  Selected Coursework: \foreach \n [count=\ni] in {#1} {\ignorespaces
+  \langen{Selected Coursework}\langsc{部分课程}: \foreach \n [count=\ni] in {#1} {\ignorespaces
     \ifnum\ni=1
       \n
     \else
