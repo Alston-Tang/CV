@@ -16,7 +16,8 @@
 \RequirePackage{pgffor}
 % Provide more flexible list
 \RequirePackage{enumitem}
-
+% Do string comparision
+\usepackage{pdftexcmds}
 % Make line space less than single
 \setlength\lineskiplimit{-1000pt}
 \linespread{0.9}
@@ -50,6 +51,13 @@
   \fi
 }
 
+\newcommand{\showiftrue}[2]{%
+  \ifnum\pdf@strcmp{#1}{TRUE}=0 %
+    #2
+  \else
+  \fi
+}
+
 %==================Languages=====================
 % Simplefied Chinese
 \newif\ifsc
@@ -70,10 +78,18 @@
 }
 \newcommand{\edutitle}[4] {
   \datedsubsection{#1}{#2}
-  \textit{#3}\enspace{\gpaf{#4}}\hfill\null
+  \textit{#3}\enspace{\gpa{#4}}\hfill\null
+}
+\newcommand{\gpa}[1] {
+  #1/4.0
 }
 \newcommand{\course} [3] {
   #1 (\ignorespaces\notempty{#2}{#2,\ignorespaces}\notempty{#3}{#3\ignorespaces})\ignorespaces
+}
+\newcommand{\coursesegment} [1] {
+  \showiftrue{\cvenablecourse}{
+    #1
+  }
 }
 \newcommand{\selectedcourses}[1] {
   \langen{Selected Coursework}\langsc{部分课程}: \foreach \n [count=\ni] in {#1} {\ignorespaces
