@@ -124,7 +124,7 @@
 %===================Experience=====================
 \newcommand{\exptitle}[4] {
   \datedsubsection{#1}{#2}
-  \textit{#3, #4}
+  \textit{#3 #4}
 }
 %===================Projects=======================
 \newcommand{\protitle}[4] {
