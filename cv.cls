@@ -161,14 +161,11 @@
   \centerline{\textbf{\huge{#1}}}
 }
 
-\newcommand{\contact}[7]{
+\newcommand{\contact}[4]{
   \null\hfill
     \notempty{#1}{{\Large} \faEnvelope\enspace#1\hfill}
     \notempty{#2}{{\Large} \faPhone\enspace#2\hfill}
     \notempty{#3}{{\Large} \faGithub\enspace\href{https://github.com/#3}{#3}\hfill}
     \notempty{#4}{{\Large} \faLinkedin\enspace\href{https://linkedin.com/in/#4}{LinkedIn}}
-  \hfill\null\newline
-  \null\hfill
-    {\Large} \faHome\enspace#5{\large\textperiodcentered}#6{\large\textperiodcentered}#7
-  \null\hfill
+  \hfill\null
 }
