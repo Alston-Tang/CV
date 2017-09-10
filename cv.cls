@@ -73,15 +73,12 @@
   \usepackage[UTF8]{ctex}
 \fi
 %==================Education=====================
-\newcommand{\gpaf}[1] {
-  {#1}/4.0
+\newcommand{\gpa}[1] {
+  {#1}\thinspace/\thinspace4.0
 }
 \newcommand{\edutitle}[4] {
   \datedsubsection{#1}{#2}
   \textit{#3}\enspace{\gpa{#4}}\hfill\null
-}
-\newcommand{\gpa}[1] {
-  #1/4.0
 }
 \newcommand{\course} [3] {
   #1 (\ignorespaces\notempty{#2}{#2,\ignorespaces}\notempty{#3}{#3\ignorespaces})\ignorespaces
@@ -136,7 +133,7 @@
       \ifnum\ni=1
         \n
       \else
-        ,\n
+        ,\thinspace\n
       \fi
     }
 }
