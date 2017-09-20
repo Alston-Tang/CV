@@ -5,7 +5,7 @@
 % Make section title
 \RequirePackage{titlesec}
 % Set paper type, orientation and margin
-\RequirePackage[letterpaper, portrait, margin=0.75in]{geometry}
+\RequirePackage[letterpaper, portrait, margin=0.6in]{geometry}
 % Set font family to NewTimesRoman
 \RequirePackage{mathptmx}
 % Use fontawesome
