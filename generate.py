@@ -3,17 +3,9 @@ import os
 from shutil import copy
 import re
 from subprocess import run
+from clean import dir_walk
 
 
-def dir_walk(path):
-    for fileName in os.listdir(path):
-        if os.path.isdir(os.path.join(path, fileName)):
-            dir_walk(os.path.join(path, fileName))
-        else:
-            if fileName.endswith(".tex") or fileName.endswith(".pdf") or fileName.endswith(".cls"):
-                pass
-            else:
-                os.remove(os.path.join(path, fileName))
 
 print("Begin generating CV instance")
 baseDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -39,7 +31,7 @@ print("Compile")
 run(["pdflatex", "cv.tex"])
 
 print("Clean")
-dir_walk(cwd)
+dir_walk(cwd, remove_py=True, remove_tex=True)
 
 print("Finish")
 
