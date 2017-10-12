@@ -16,8 +16,10 @@
 \RequirePackage{pgffor}
 % Provide more flexible list
 \RequirePackage{enumitem}
+% Generate Nth
+\RequirePackage[super]{nth}
 % Do string comparision
-\usepackage{pdftexcmds}
+\RequirePackage{pdftexcmds}
 % Make line space less than single
 \setlength\lineskiplimit{-1000pt}
 \linespread{0.9}
@@ -158,11 +160,14 @@
   \centerline{\textbf{\huge{#1}}}
 }
 
-\newcommand{\contact}[4]{
+\newcommand{\contact}[5]{
   \null\hfill
     \notempty{#1}{{\Large} \faEnvelope\enspace#1\hfill}
     \notempty{#2}{{\Large} \faPhone\enspace#2\hfill}
     \notempty{#3}{{\Large} \faGithub\enspace\href{https://github.com/#3}{#3}\hfill}
     \notempty{#4}{{\Large} \faLinkedin\enspace\href{https://linkedin.com/in/#4}{LinkedIn}}
-  \hfill\null
+  \hfill\null\newline
+  \null\hfill
+    {\Large} \faHome\enspace#5
+  \null\hfill
 }
