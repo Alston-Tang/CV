@@ -5,3 +5,5 @@
 *.out
 cv.pdf
 *.fdb_latexmk
+/instances
+/.idea
