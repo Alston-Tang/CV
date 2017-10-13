@@ -34,14 +34,3 @@ print("Clean")
 dir_walk(cwd, remove_py=True, remove_tex=True)
 
 print("Finish")
-
-
-
-
-
-
-
-
-
-
-
