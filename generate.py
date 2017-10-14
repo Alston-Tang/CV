@@ -10,9 +10,11 @@ from clean import dir_walk
 print("Begin generating CV instance")
 baseDir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 cwd = os.path.dirname(os.path.abspath(__file__))
+company_name = os.path.basename(cwd).split('-')[0]
+tex_file = company_name + ".tex"
 
 print("Copy components tex")
-with open(os.path.join(cwd, "cv.tex"), encoding="utf-8") as mainTex:
+with open(os.path.join(cwd, tex_file), encoding="utf-8") as mainTex:
     while True:
         line = mainTex.readline()
         if line == "":
@@ -28,7 +30,7 @@ with open(os.path.join(cwd, "cv.tex"), encoding="utf-8") as mainTex:
 
 print("Compile")
 
-run(["pdflatex", "cv.tex"])
+run(["pdflatex", tex_file])
 
 print("Clean")
 dir_walk(cwd, remove_py=True, remove_tex=True)

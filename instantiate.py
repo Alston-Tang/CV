@@ -5,9 +5,9 @@ import re
 
 print("Begin generating CV instance")
 
-name = input("Name of this instance ?")
+company_name = input("Name of this instance ?")
 curDateTime = datetime.utcnow()
-name += "-" + curDateTime.strftime("%y-%m-%d-%M%S")
+name = company_name + "-" + curDateTime.strftime("%y-%m-%d-%M%S")
 baseDir = os.path.dirname(os.path.abspath(__file__))
 
 cwd = os.path.join(baseDir, "instances")
@@ -21,7 +21,7 @@ if not os.path.isdir(name):
 print("Copy class file")
 copy(os.path.join(baseDir, "cv.cls"), os.path.join(cwd, "cv.cls"))
 print("Copy main tex file")
-copy(os.path.join(baseDir, "cv.tex"), os.path.join(cwd, "cv.tex"))
+copy(os.path.join(baseDir, "cv.tex"), os.path.join(cwd, company_name + ".tex"))
 print("Copy generation script")
 copy(os.path.join(baseDir, "generate.py"), os.path.join(cwd, "generate.py"))
 copy(os.path.join(baseDir, "clean.py"), os.path.join(cwd, "clean.py"))
