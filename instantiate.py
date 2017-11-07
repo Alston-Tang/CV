@@ -8,7 +8,7 @@ print("Begin generating CV instance")
 
 company_name = input("Name of this instance ?")
 curDateTime = datetime.utcnow()
-name = company_name + "-" + curDateTime.strftime("%y-%m-%d-%M%S")
+name = company_name + "-" + curDateTime.strftime("%y-%m-%d-%H-%M-%S")
 baseDir = os.path.dirname(os.path.abspath(__file__))
 
 cwd = os.path.join(baseDir, "instances")
