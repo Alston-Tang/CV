@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 from shutil import copy
+from helpers import mirror
 import re
 
 print("Begin generating CV instance")
@@ -11,6 +12,8 @@ name = company_name + "-" + curDateTime.strftime("%y-%m-%d-%M%S")
 baseDir = os.path.dirname(os.path.abspath(__file__))
 
 cwd = os.path.join(baseDir, "instances")
+
+
 if not os.path.isdir(cwd):
     os.mkdir(cwd)
 
@@ -19,9 +22,12 @@ if not os.path.isdir(name):
     os.mkdir(cwd)
 
 print("Copy class file")
+
 copy(os.path.join(baseDir, "cv.cls"), os.path.join(cwd, "cv.cls"))
-print("Copy main tex file")
-copy(os.path.join(baseDir, "cv.tex"), os.path.join(cwd, company_name + ".tex"))
+
+print("Copy tex files")
+pattern = re.compile('\S*.(tex|cls)\Z')
+mirror(baseDir, cwd, pattern)
 print("Copy generation script")
 copy(os.path.join(baseDir, "generate.py"), os.path.join(cwd, "generate.py"))
 copy(os.path.join(baseDir, "clean.py"), os.path.join(cwd, "clean.py"))

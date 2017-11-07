@@ -23,5 +23,6 @@ def dir_walk(path, remove_tex=False, remove_py=False):
             else:
                 os.remove(os.path.join(path, fileName))
 
+
 if __name__ == "__main__":
     dir_walk(os.path.abspath(os.path.dirname(__file__)))
