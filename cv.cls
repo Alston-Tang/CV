@@ -60,6 +60,13 @@
   \fi
 }
 
+\newcommand{\excepttopic}[2]{
+  \ifnum\pdf@strcmp{#2}{\topic}=0
+  \else
+    #1
+  \fi
+}
+
 %==================Languages=====================
 % Simplefied Chinese
 \newif\ifsc
@@ -74,6 +81,11 @@
 \ifsc
   \usepackage[UTF8]{ctex}
 \fi
+
+%==================Objective=====================
+
+
+
 %==================Education=====================
 \newcommand{\gpa}[1] {
   {#1}\thinspace/\thinspace4.0
@@ -83,12 +95,13 @@
   \textit{#3}\enspace{\gpa{#4}}\hfill\null
 }
 \newcommand{\course} [3] {
-  #1 (\ignorespaces\notempty{#2}{#2,\ignorespaces}\notempty{#3}{#3\ignorespaces})\ignorespaces
+  \textbf{#1} (\ignorespaces\notempty{#2}{#2\ignorespaces}\notempty{#3}{,#3\ignorespaces})\ignorespaces
 }
-\newcommand{\coursesegment} [1] {
-  \showiftrue{\cvenablecourse}{
+\newcommand{\coursesegment} [2] {
+  \ifnum\pdf@strcmp{\topic}{#2}=0 %
     #1
-  }
+  \else
+  \fi
 }
 \newcommand{\selectedcourses}[1] {
   \langen{Selected Coursework}\langsc{部分课程}: \foreach \n [count=\ni] in {#1} {\ignorespaces
@@ -120,15 +133,21 @@
   \setlist[itemize]{}
 }
 
+\newcommand{\skilltopic}[2] {
+  \ifnum\pdf@strcmp{\topic}{#2}=0 %
+    #1
+  \else
+  \fi
+}
+
 %===================Experience=====================
-\newcommand{\exptitle}[4] {
+\newcommand{\exptitle}[3] {
   \datedsubsection{#1}{#2}
-  \textit{#3 #4}
+  \textit{#3}
 }
 %===================Projects=======================
-\newcommand{\protitle}[4] {
-  \datedsubsection{#1 \notempty{#4}{\href{https://github.com/Alston-Tang/#4}{\normalfont{ \faGithub\enspace#4}}}}{#2}
-  \textit{#3}
+\newcommand{\protitle}[3] {
+  \datedsubsection{#1 \notempty{#3}{\href{https://github.com/Alston-Tang/#3}{\normalfont{ \faGithub\enspace#3}}}}{#2}
 }
 \newcommand{\skilllist}[2] {
     \textbf{#1}: \foreach \n [count=\ni] in {#2} {\ignorespaces
@@ -160,14 +179,11 @@
   \centerline{\textbf{\huge{#1}}}
 }
 
-\newcommand{\contact}[5]{
+\newcommand{\contact}[4]{
   \null\hfill
     \notempty{#1}{{\Large} \faEnvelope\enspace#1\hfill}
     \notempty{#2}{{\Large} \faPhone\enspace#2\hfill}
     \notempty{#3}{{\Large} \faGithub\enspace\href{https://github.com/#3}{#3}\hfill}
     \notempty{#4}{{\Large} \faLinkedin\enspace\href{https://linkedin.com/in/#4}{LinkedIn}}
-  \hfill\null\newline
-  \null\hfill
-    {\Large} \faHome\enspace#5
   \null\hfill
 }
